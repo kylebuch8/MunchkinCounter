@@ -1,0 +1,30 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../routes.html">
+<link rel="import" href="../mc-home/mc-home.html">
+<link rel="import" href="../mc-setup/mc-setup.html">
+<link rel="import" href="../mc-game/mc-game.html">
+<link rel="import" href="../mc-player/mc-player.html">
+
+<dom-module id="mc-app">
+    <template>
+        <h1>Munchkin Counter</h1>
+
+        <more-route-selector>
+            <iron-pages>
+                <mc-home route="/"></mc-home>
+                <mc-setup route="/setup"></mc-setup>
+                <mc-game route="/game"></mc-game>
+                <mc-player route="/player"></mc-player>
+            </iron-pages>
+        </more-route-selector>
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'mc-app'
+        });
+
+    </script>
+</dom-module>
