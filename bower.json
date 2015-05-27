@@ -16,5 +16,8 @@
     "polymer": "Polymer/polymer#^0.9.0",
     "iron-pages": "PolymerElements/iron-pages#~0.9.1",
     "more-routing": "PolymerLabs/more-routing#~0.9"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.6.0"
   }
 }
