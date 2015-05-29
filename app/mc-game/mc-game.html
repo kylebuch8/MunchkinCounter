@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/more-routing/more-route.html">
+<link rel="import" href="../bower_components/firebase-element/firebase-collection.html">
 
 <dom-module id="mc-game">
     <template>
@@ -25,10 +26,11 @@
         </style>
 
         <more-route context name="game" params="{{params}}"></more-route>
+        <firebase-collection data="{{players}}" location="https://munchkincounter.firebaseio.com/games/z957ygu/players"></firebase-collection>
         <div flex>
             <template is="dom-repeat" items="{{players}}">
                 <div player on-tap="goToPlayer">
-                    <span>{{item}}</span>
+                    <span>{{item.name}}</span>
                 </div>
             </template>
         </div>
@@ -39,12 +41,12 @@
     Polymer({
         is: 'mc-game',
 
-        properties: {
-            players: {
-                type: Array,
-                value: ['Kyle', 'Kristy', 'Cyrus', 'Ramona']
-            }
-        },
+        // properties: {
+        //     players: {
+        //         type: Array,
+        //         value: ['Kyle', 'Kristy', 'Cyrus', 'Ramona']
+        //     }
+        // },
 
         goToPlayer: function (event) {
             MoreRouting.navigateTo('player', {

@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/more-routing/more-route.html">
+<link rel="import" href="../bower_components/firebase-element/firebase.html">
 
 <dom-module id="mc-home">
     <template>
@@ -15,6 +16,9 @@
     </template>
 
     <script>
+        function generateRandomId() {
+            return Math.random().toString(36).substr(2, 7);
+        }
 
         Polymer({
             is: 'mc-home',
@@ -26,8 +30,17 @@
             },
 
             createGame: function () {
+                var id = generateRandomId(),
+                    gameRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + id),
+                    game = {
+                        players: [],
+                        winningLevel: 10,
+                        createDate: Firebase.ServerValue.TIMESTAMP
+                    },
+                    newGameRef = gameRef.set(game);
+
                 MoreRouting.navigateTo('setup', {
-                    gameId: 'fjkdlas'
+                    gameId: id
                 });
             }
         });

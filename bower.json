@@ -15,7 +15,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~1.0.0",
     "iron-pages": "PolymerElements/iron-pages#~1.0.0",
-    "more-routing": "PolymerLabs/more-routing#~0.8.1"
+    "more-routing": "PolymerLabs/more-routing#~0.8.1",
+    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.0"
   },
   "resolutions": {
     "polymer": "~1.0.0",
