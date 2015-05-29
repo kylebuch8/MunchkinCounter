@@ -2,20 +2,99 @@
 <link rel="import" href="../bower_components/more-routing/more-route.html">
 
 <dom-module id="mc-player">
+    <style>
+
+        [player] {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+        [details] {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+    </style>
+
     <template>
         <more-route context name="player" params="{{params}}"></more-route>
 
         <button on-tap="goBack"><</button>
 
-        <h1>Player</h1>
+        <div player>
+            <button on-tap="levelDown"><</button>
+            <div details>
+                <span>{{player.name}}</span>
+                <h1>{{player.level}}</h1>
+            </div>
+            <button on-tap="levelUp">></button>
+        </div>
 
-        <span>{{params.playerId}}</span>
     </template>
 
     <script>
 
+    var playerRef;
+
     Polymer({
         is: 'mc-player',
+
+        properties: {
+            params: Object,
+            player: {
+                type: Object,
+                value: {
+                    level: 1
+                }
+            }
+        },
+
+        observers: [
+            'playerIdChanged(params.playerId)'
+        ],
+
+        playerIdChanged: function (playerId) {
+            if (!playerId) {
+                return;
+            }
+
+            var self = this;
+
+            playerRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + this.params.gameId + '/players/' + this.params.playerId);
+            playerRef.on('value', function (snapshot) {
+                self.player = snapshot.val();
+            });
+        },
+
+        levelDown: function () {
+            if (this.player.level > 1) {
+                this.player.level -= 1;
+                this.set('player.level', this.player.level);
+
+                playerRef.update({
+                    level: this.player.level
+                });
+            }
+        },
+
+        levelUp: function () {
+            this.player.level += 1;
+            this.set('player.level', this.player.level);
+
+            playerRef.update({
+                level: this.player.level
+            });
+        },
 
         goBack: function () {
             window.history.back();

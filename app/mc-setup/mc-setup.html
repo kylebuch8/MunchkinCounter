@@ -6,13 +6,32 @@
         <more-route context name="setup" params="{{params}}"></more-route>
 
         <h1>Setup</h1>
-        <button on-tap="playGame">Play</button>
+        <input type="text" placeholder="Player Name"> <button>Add Player</button>
+
+        <div>
+            <button on-tap="playGame">Play</button>
+        </div>
     </template>
 
     <script>
 
         Polymer({
             is: 'mc-setup',
+
+            properties: {
+                params: Object
+            },
+
+            observers: [
+                'gameIdChanged(params.gameId)'
+            ],
+
+            gameIdChanged: function (gameId) {
+                // var gameRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + gameId);
+                // gameRef.on('value', function (snapshot) {
+                //
+                // });
+            },
 
             playGame: function () {
                 MoreRouting.navigateTo('game', {
