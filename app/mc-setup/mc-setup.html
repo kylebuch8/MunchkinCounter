@@ -1,14 +1,24 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/more-routing/more-route.html">
 
 <dom-module id="mc-setup">
     <template>
+        <more-route context name="setup" params="{{params}}"></more-route>
+
         <h1>Setup</h1>
+        <button on-tap="playGame">Play</button>
     </template>
 
     <script>
 
         Polymer({
-            is: 'mc-setup'
+            is: 'mc-setup',
+
+            playGame: function () {
+                MoreRouting.navigateTo('game', {
+                    gameId: this.params.gameId
+                });
+            }
         });
 
     </script>

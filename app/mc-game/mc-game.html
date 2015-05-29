@@ -1,14 +1,51 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/more-routing/more-route.html">
 
 <dom-module id="mc-game">
     <template>
-        <h1>Game</h1>
+        <style>
+            [flex] {
+                display: flex;
+            }
+
+            [player] {
+                display: flex;
+                flex-grow: 1;
+                align-self: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+        </style>
+
+        <more-route context name="game" params="{{params}}"></more-route>
+        <div flex>
+            <template is="dom-repeat" items="{{players}}">
+                <div player on-tap="goToPlayer">
+                    <span>{{item}}</span>
+                </div>
+            </template>
+        </div>
     </template>
 
     <script>
 
     Polymer({
-        is: 'mc-game'
+        is: 'mc-game',
+
+        properties: {
+            players: {
+                type: Array,
+                value: ['Kyle', 'Kristy', 'Cyrus', 'Ramona']
+            }
+        },
+
+        goToPlayer: function (event) {
+            MoreRouting.navigateTo('player', {
+                gameId: this.params.gameId,
+                playerId: event.model.item
+            });
+        }
     });
 
     </script>

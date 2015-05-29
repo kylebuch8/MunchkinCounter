@@ -1,14 +1,25 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/more-routing/more-route.html">
 
 <dom-module id="mc-player">
     <template>
+        <more-route context name="player" params="{{params}}"></more-route>
+
+        <button on-tap="goBack"><</button>
+
         <h1>Player</h1>
+
+        <span>{{params.playerId}}</span>
     </template>
 
     <script>
 
     Polymer({
-        is: 'mc-player'
+        is: 'mc-player',
+
+        goBack: function () {
+            window.history.back();
+        }
     });
 
     </script>

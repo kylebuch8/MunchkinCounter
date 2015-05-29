@@ -13,8 +13,12 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.9.0",
-    "iron-pages": "PolymerElements/iron-pages#~0.9.1",
-    "more-routing": "PolymerLabs/more-routing#~0.9"
+    "polymer": "Polymer/polymer#~1.0.0",
+    "iron-pages": "PolymerElements/iron-pages#~1.0.0",
+    "more-routing": "PolymerLabs/more-routing#~0.8.1"
+  },
+  "resolutions": {
+    "polymer": "~1.0.0",
+    "webcomponentsjs": "^0.7.2"
   }
 }
