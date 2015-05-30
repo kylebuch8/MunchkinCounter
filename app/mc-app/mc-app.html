@@ -7,9 +7,16 @@
 <link rel="import" href="../mc-player/mc-player.html">
 
 <dom-module id="mc-app">
-    <template>
-        <!-- <h1>Munchkin Counter</h1> -->
+    <style>
 
+        more-route-selector,
+        iron-pages,
+        iron-pages > * {
+            height: 100%;
+        }
+
+    </style>
+    <template>
         <more-route-selector>
             <iron-pages>
                 <mc-home></mc-home>

@@ -1,12 +1,33 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>Munchkin Counter</title>
         <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
         <script src="bower_components/firebase/firebase.js"></script>
 
+        <link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+
         <link rel="import" href="routes.html">
         <link rel="import" href="mc-app/mc-app.html">
+
+        <style>
+
+            html,
+            body,
+            mc-app {
+                height: 100%;
+            }
+
+            body {
+                font-family: RobotoDraft;
+                margin: 0;
+            }
+
+        </style>
     </head>
     <body unresolved>
         <mc-app></mc-app>

@@ -1,16 +1,25 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/more-routing/more-route.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="mc-player">
     <style>
 
+        :host {
+            height: 100%;
+        }
+
         [player] {
+            height: 100%;
             display: -webkit-flex;
             display: flex;
             -webkit-align-items: center;
             align-items: center;
             -webkit-justify-content: center;
             justify-content: center;
+            -webkit-box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.5);
         }
 
         [details] {
@@ -24,17 +33,32 @@
             justify-content: center;
         }
 
+        [avatar] {
+            background-color: #ccc;
+            width: 100px;
+            height: 100px;
+            border: 3px solid white;
+            border-radius: 50%;
+        }
+
+        [back-button] {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+        }
+
     </style>
 
     <template>
         <more-route context name="player" params="{{params}}"></more-route>
 
-        <button on-tap="goBack"><</button>
+        <paper-icon-button back-button icon="arrow-back" title="arrow-back" on-tap="goBack"></paper-icon-button>
 
         <div player style$="{{computeStyle(player.color)}}">
             <button on-tap="levelDown"><</button>
             <div details>
-                <span>{{player.name}}</span>
+                <div>{{player.name}}</div>
+                <div avatar>{{player.gender}}</div>
                 <h1>{{player.level}}</h1>
             </div>
             <button on-tap="levelUp">></button>

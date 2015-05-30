@@ -19,7 +19,8 @@
     "firebase": "~2.2.5",
     "iron-input": "PolymerElements/iron-input#~1.0.1",
     "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.1",
-    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.1"
+    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.1",
+    "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.0"
   },
   "resolutions": {
     "polymer": "~1.0.0",
