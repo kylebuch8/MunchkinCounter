@@ -30,9 +30,10 @@
 
         <div flex>
             <template is="dom-repeat" items="{{players}}">
-                <div player on-tap="goToPlayer">
+                <div player style$="{{computeStyle(item.color)}}" on-tap="goToPlayer">
                     <span>{{item.name}}</span>
                     <h1>{{item.level}}</h1>
+                    <span>{{item.gender}}</span>
                 </div>
             </template>
         </div>
@@ -53,7 +54,6 @@
         ],
 
         gameIdChanged: function (gameId) {
-            console.log('mc-game: game id changed');
             if (!gameId) {
                 return;
             }
@@ -80,6 +80,10 @@
                 gameId: this.params.gameId,
                 playerId: event.model.item.__firebaseKey__
             });
+        },
+
+        computeStyle: function (color) {
+            return 'background-color: ' + color + ';';
         }
     });
 

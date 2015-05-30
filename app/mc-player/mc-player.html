@@ -31,7 +31,7 @@
 
         <button on-tap="goBack"><</button>
 
-        <div player>
+        <div player style$="{{computeStyle(player.color)}}">
             <button on-tap="levelDown"><</button>
             <div details>
                 <span>{{player.name}}</span>
@@ -94,6 +94,10 @@
             playerRef.update({
                 level: this.player.level
             });
+        },
+
+        computeStyle: function (color) {
+            return 'background-color: ' + color + ';';
         },
 
         goBack: function () {

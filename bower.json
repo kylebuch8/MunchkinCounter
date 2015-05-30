@@ -16,7 +16,10 @@
     "polymer": "Polymer/polymer#~1.0.0",
     "iron-pages": "PolymerElements/iron-pages#~1.0.0",
     "more-routing": "PolymerLabs/more-routing#~0.8.1",
-    "firebase": "~2.2.5"
+    "firebase": "~2.2.5",
+    "iron-input": "PolymerElements/iron-input#~1.0.1",
+    "paper-radio-group": "PolymerElements/paper-radio-group#~1.0.1",
+    "paper-radio-button": "PolymerElements/paper-radio-button#~1.0.1"
   },
   "resolutions": {
     "polymer": "~1.0.0",
