@@ -11,6 +11,7 @@
         [game] {
             display: -webkit-flex;
             display: flex;
+            flex-wrap: wrap;
         }
 
         .player {
@@ -51,7 +52,7 @@
 
         <div game>
             <template is="dom-repeat" items="{{players}}">
-                <div class="player" style$="{{computeStyle(item.color)}}" on-tap="goToPlayer">
+                <div class="player" style$="{{computeStyle(item.color, index)}}" on-tap="goToPlayer">
                     <div>{{item.name}}</div>
                     <div avatar>{{item.gender}}</div>
                     <h1>{{item.level}}</h1>
@@ -103,8 +104,34 @@
             });
         },
 
-        computeStyle: function (color) {
-            return 'background-color: ' + color + ';';
+        computeStyle: function (color, index) {
+            var style = 'background-color: ' + color + ';';
+
+            if (this.players.length === 3 && index === 2) {
+                style += ' width: 100%;';
+            }
+
+            if (this.players.length > 3) {
+                style += ' height: 50%;';
+            }
+
+            if (this.players.length === 4) {
+                style += ' width: 50%;';
+            }
+
+            if (this.players.length === 5) {
+                if (index < 3) {
+                    style += ' width: 33%;';
+                } else {
+                    style += ' width: 50%;';
+                }
+            }
+
+            if (this.players.length === 6) {
+                style += ' width: 33%;';
+            }
+
+            return style;
         }
     });
 
