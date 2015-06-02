@@ -57,8 +57,10 @@
         <div player style$="{{computeStyle(player.color)}}">
             <button on-tap="levelDown"><</button>
             <div details>
-                <div>{{player.name}}</div>
-                <div avatar>{{player.gender}}</div>
+                <div>
+                    <h1>{{player.name}}</h1>
+                </div>
+                <div avatar></div>
                 <h1>{{player.level}}</h1>
             </div>
             <button on-tap="levelUp">></button>
