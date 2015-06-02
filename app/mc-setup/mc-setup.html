@@ -36,6 +36,10 @@
         </template>
 
         <div>
+            Winning Level: <input type="number" is="iron-input" bind-value="{{game.winningLevel}}">
+        </div>
+
+        <div>
             <button on-tap="playGame">Play</button>
         </div>
     </template>
@@ -50,12 +54,14 @@
 
             properties: {
                 params: Object,
+                game: Object,
                 players: Object,
                 playerName: String
             },
 
             observers: [
-                'gameIdChanged(params.gameId)'
+                'gameIdChanged(params.gameId)',
+                'winningLevelChanged(game.winningLevel)'
             ],
 
             gameIdChanged: function (gameId) {
@@ -67,7 +73,7 @@
 
                 gameRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + gameId);
                 gameRef.on('value', function (snapshot) {
-
+                    self.game = snapshot.val();
                 });
 
                 playersRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + gameId + '/players');
@@ -77,6 +83,12 @@
                         data.__firebaseKey__ = key;
                         return data;
                     });
+                });
+            },
+
+            winningLevelChanged: function (level) {
+                gameRef.update({
+                    winningLevel: level
                 });
             },
 
