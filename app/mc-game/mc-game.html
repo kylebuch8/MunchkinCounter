@@ -15,7 +15,7 @@
             flex-wrap: wrap;
         }
 
-        .player {
+        [player] {
             display: -webkit-flex;
             display: flex;
             -webkit-flex-grow: 1;
@@ -40,17 +40,17 @@
             border-radius: 50%;
         }
 
-        .player {
+        [player] {
             width: 33.33%;
         }
 
-        .player:nth-last-child(5),
-        .player:nth-last-child(5) ~ .player {
+        [player]:nth-last-child(5),
+        [player]:nth-last-child(5) ~ [player] {
             width: 50%;
         }
 
-        .player:nth-last-child(6),
-        .player:nth-last-child(6) ~ .player {
+        [player]:nth-last-child(6),
+        [player]:nth-last-child(6) ~ [player] {
             width: 33.33%;
         }
 
@@ -62,20 +62,20 @@
                 flex-wrap: nowrap;
             }
 
-            .player {
+            [player] {
                 width: 100%;
                 -webkit-flex-direction: row;
                 flex-direction: row;
             }
 
-            .player:nth-last-child(5),
-            .player:nth-last-child(5) ~ .player,
-            .player:nth-last-child(6),
-            .player:nth-last-child(6) ~ .player {
+            [player]:nth-last-child(5),
+            [player]:nth-last-child(5) ~ [player],
+            [player]:nth-last-child(6),
+            [player]:nth-last-child(6) ~ [player] {
                 width: 100%;
             }
 
-            .player > * {
+            [player] > * {
                 display: -webkit-flex;
                 display: flex;
                 width: 33.33%;
@@ -85,7 +85,7 @@
                 justify-content: center;
             }
 
-            .player > .player-name {
+            [player] > [player]-name {
                 -webkit-justify-content: flex-start;
                 justify-content: flex-start;
             }
@@ -103,10 +103,12 @@
 
         <div game>
             <template is="dom-repeat" items="{{players}}">
-                <div class="player" style$="{{computeStyle(item.color, index)}}" on-tap="goToPlayer">
-                    <div class="player-name">{{item.name}}</div>
+                <div player style$="{{computeStyle(item.color)}}" on-tap="goToPlayer">
+                    <div class="player-name">
+                        <h1>{{item.name}}</h1>
+                    </div>
                     <div>
-                        <div avatar>{{item.gender}}</div>
+                        <div avatar></div>
                     </div>
                     <h1>{{item.level}}</h1>
                 </div>
@@ -157,34 +159,8 @@
             });
         },
 
-        computeStyle: function (color, index) {
-            var style = 'background-color: ' + color + ';';
-
-            // if (this.players.length === 3 && index === 2) {
-            //     style += ' width: 100%;';
-            // }
-            //
-            // if (this.players.length > 3) {
-            //     style += ' height: 50%;';
-            // }
-            //
-            // if (this.players.length === 4) {
-            //     style += ' width: 50%;';
-            // }
-            //
-            // if (this.players.length === 5) {
-            //     if (index < 3) {
-            //         style += ' width: 33%;';
-            //     } else {
-            //         style += ' width: 50%;';
-            //     }
-            // }
-            //
-            // if (this.players.length === 6) {
-            //     style += ' width: 33%;';
-            // }
-
-            return style;
+        computeStyle: function (color) {
+            return 'background-color: ' + color + ';';
         }
     });
 
