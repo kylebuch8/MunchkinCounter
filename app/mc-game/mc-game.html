@@ -54,6 +54,14 @@
             width: 33.33%;
         }
 
+        .game-id {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            opacity: 0.5;
+            color: white;
+        }
+
         @media (max-width: 720px) {
             [game] {
                 -webkit-flex-direction: column;
@@ -114,6 +122,8 @@
                 </div>
             </template>
         </div>
+
+        <h1 class="game-id">{{params.gameId}}</h1>
     </template>
 
     <script>
