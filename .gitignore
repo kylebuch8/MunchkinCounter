@@ -1,2 +1,7 @@
 node_modules
 bower_components
+cordova/platforms
+cordova/plugins/*
+!cordova/plugins/android.json
+!cordova/plugins/ios.json
+cordova/www

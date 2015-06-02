@@ -12,4 +12,12 @@ gulp.task('server', function () {
     gulp.watch('**/*.html').on('change', browserSync.reload);
 });
 
+gulp.task('copy', function () {
+
+});
+
+gulp.task('build-cordova', function () {
+
+});
+
 gulp.task('default', ['server']);
