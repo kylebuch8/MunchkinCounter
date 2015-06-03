@@ -124,7 +124,12 @@
             <template is="dom-repeat" items="{{players}}">
                 <div player style$="{{computeStyle(item.color)}}" on-tap="goToPlayer">
                     <div style="position: relative;">
-                        <img src="../images/munchkinMale.png" width="130" style="position: absolute; left: -75px; bottom: -40px;">
+                        <template is="dom-if" if="{{isMale(item.gender)}}">
+                            <img src="../images/munchkinMale.png" width="130" style="position: absolute; left: -75px; bottom: -40px;">
+                        </template>
+                        <template is="dom-if" if="{{!isMale(item.gender)}}">
+                            <img src="../images/munchkinFemale.png" width="130" style="position: absolute; right: -90px; bottom: -40px;">
+                        </template>
                         <div avatar>{{item.level}}</div>
                     </div>
                     <div class="player-name">
@@ -182,6 +187,10 @@
 
         computeStyle: function (color) {
             return 'background-color: ' + color + ';';
+        },
+
+        isMale: function (gender) {
+            return gender === 'male';
         }
     });
 
