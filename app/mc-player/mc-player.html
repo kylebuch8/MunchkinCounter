@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/more-routing/more-route.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="mc-player">
@@ -8,18 +9,42 @@
 
         :host {
             height: 100%;
+            color: white;
+        }
+
+        .container {
+            height: 100%;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.5);
         }
 
         [player] {
-            height: 100%;
             display: -webkit-flex;
             display: flex;
             -webkit-align-items: center;
             align-items: center;
             -webkit-justify-content: center;
             justify-content: center;
-            -webkit-box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.5);
-            box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.5);
+        }
+
+        .gender-selector iron-selector {
+            /*display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: space-around;
+            justify-content: space-around;*/
+        }
+
+        .gender-selector iron-selector img {
+            transition: ease-in-out opacity 0.1s;
+            opacity: 0.3;
+        }
+
+        .gender-selector iron-selector img.iron-selected {
+            opacity: 1;
         }
 
         [details] {
@@ -41,10 +66,19 @@
             border-radius: 50%;
         }
 
+        .player-level {
+            font-size: 90px;
+            font-family: 'Lusitana', serif;
+        }
+
         [back-button] {
             position: absolute;
             top: 16px;
             left: 16px;
+        }
+
+        .player-name {
+            font-size: 50px;
         }
 
     </style>
@@ -54,16 +88,24 @@
 
         <paper-icon-button back-button icon="arrow-back" title="arrow-back" on-tap="goBack"></paper-icon-button>
 
-        <div player style$="{{computeStyle(player.color)}}">
-            <button on-tap="levelDown"><</button>
-            <div details>
-                <div>
-                    <h1>{{player.name}}</h1>
+        <div class="container" style$="{{computeStyle(player.color)}}">
+            <div player>
+                <button on-tap="levelDown"><</button>
+                <div details>
+                    <div>
+                        <h1 class="player-name">{{player.name}}</h1>
+                    </div>
+                    <div avatar></div>
+                    <h1 class="player-level">{{player.level}}</h1>
                 </div>
-                <div avatar></div>
-                <h1>{{player.level}}</h1>
+                <button on-tap="levelUp">></button>
             </div>
-            <button on-tap="levelUp">></button>
+            <div class="gender-selector">
+                <iron-selector attr-for-selected="value" selected="{{player.gender}}">
+                    <img src="../images/munchkinMale.png" value="male" width="60">
+                    <img src="../images/munchkinFemale.png" value="female" width="60">
+                </iron-selector>
+            </div>
         </div>
 
     </template>
@@ -86,7 +128,8 @@
         },
 
         observers: [
-            'playerIdChanged(params.playerId)'
+            'playerIdChanged(params.playerId)',
+            'playerGenderChanged(params.playerId, player.gender)'
         ],
 
         playerIdChanged: function (playerId) {
@@ -99,6 +142,12 @@
             playerRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + this.params.gameId + '/players/' + this.params.playerId);
             playerRef.on('value', function (snapshot) {
                 self.player = snapshot.val();
+            });
+        },
+
+        playerGenderChanged: function (playerId, gender) {
+            playerRef.update({
+                gender: gender
             });
         },
 
