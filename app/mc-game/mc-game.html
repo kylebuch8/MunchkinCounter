@@ -70,6 +70,24 @@
             width: 33.33%;
         }
 
+        .image-container {
+            position: relative;
+        }
+
+        [player] img {
+            position: absolute;
+            width: 130px;
+            bottom: -40px;
+        }
+
+        .img-male {
+            left: -75px;
+        }
+
+        .img-female {
+            right: -90px;
+        }
+
         .game-id {
             position: absolute;
             bottom: 16px;
@@ -90,6 +108,7 @@
                 width: 100%;
                 -webkit-flex-direction: row;
                 flex-direction: row;
+                align-items: center;
             }
 
             [player]:nth-last-child(5),
@@ -102,16 +121,34 @@
             [player] > * {
                 display: -webkit-flex;
                 display: flex;
-                width: 33.33%;
                 -webkit-align-items: center;
                 align-items: center;
-                -webkit-justify-content: center;
-                justify-content: center;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+            }
+
+            .image-container {
+                width: 50%;
+            }
+
+            [player] img {
+                width: 75px;
+                position: static;
             }
 
             [avatar] {
-                width: 75px;
-                height: 75px;
+                width: 60px;
+                height: 60px;
+                font-size: 40px;
+            }
+
+            .player-name {
+                order: -1;
+            }
+
+            .player-name h1 {
+                font-size: 30px;
+                margin: 0;
             }
         }
 
@@ -123,12 +160,12 @@
         <div game>
             <template is="dom-repeat" items="{{players}}">
                 <div player style$="{{computeStyle(item.color)}}" on-tap="goToPlayer">
-                    <div style="position: relative;">
+                    <div class="image-container">
                         <template is="dom-if" if="{{isMale(item.gender)}}">
-                            <img src="../images/munchkinMale.png" width="130" style="position: absolute; left: -75px; bottom: -40px;">
+                            <img src="../images/munchkinMale.png" class="img-male">
                         </template>
                         <template is="dom-if" if="{{!isMale(item.gender)}}">
-                            <img src="../images/munchkinFemale.png" width="130" style="position: absolute; right: -90px; bottom: -40px;">
+                            <img src="../images/munchkinFemale.png" class="img-female">
                         </template>
                         <div avatar>{{item.level}}</div>
                     </div>
