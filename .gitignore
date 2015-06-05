@@ -1,5 +1,6 @@
 node_modules
 bower_components
+app/build.html
 cordova/platforms
 cordova/plugins/*
 !cordova/plugins/android.json
