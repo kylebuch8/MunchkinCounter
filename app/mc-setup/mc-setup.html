@@ -86,11 +86,15 @@
 
                 playersRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + gameId + '/players');
                 playersRef.on('value', function (snapshot) {
-                    self.players = Object.keys(snapshot.val()).map(function (key) {
-                        var data = snapshot.val()[key];
-                        data.__firebaseKey__ = key;
-                        return data;
-                    });
+                    if (snapshot.val()) {
+                        self.players = Object.keys(snapshot.val()).map(function (key) {
+                            var data = snapshot.val()[key];
+                            data.__firebaseKey__ = key;
+                            return data;
+                        });
+                    } else {
+                        self.players = [];
+                    }
                 });
             },
 
@@ -141,9 +145,11 @@
             },
 
             playGame: function () {
-                MoreRouting.navigateTo('game', {
-                    gameId: this.params.gameId
-                });
+                if (this.players.length > 1) {
+                    MoreRouting.navigateTo('game', {
+                        gameId: this.params.gameId
+                    });
+                }
             }
         });
 
