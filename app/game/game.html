@@ -1,0 +1,5 @@
+{{vm.gameId}}
+
+<div ng-repeat="player in vm.players" ng-click="vm.goToPlayer($index)">
+    {{player.name}} - {{player.level}}
+</div>

@@ -1,0 +1,6 @@
+<form name="gameForm" novalidate ng-submit="gameForm.$valid && vm.goToGame()">
+    <input type="text" ng-model="vm.game.id" placeholder="Game ID" required>
+    <button>Go</button>
+</form>
+
+<button ng-click="vm.startNewGame()">Start New Game</button>
