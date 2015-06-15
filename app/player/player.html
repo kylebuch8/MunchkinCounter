@@ -1,7 +1,20 @@
-{{vm.player.name}} - {{vm.player.level}}
+<div class="player flex column center center-items" ng-style="{ 'background-color': vm.player.color }">
+    <div class="player-name flex center center-items">{{vm.player.name}}</div>
 
-<button ng-click="vm.levelDown()">-</button>
-<button ng-click="vm.levelUp()">+</button>
+    <div class="player-level flex">
+        <button ng-click="vm.levelDown()">-</button>
+        <div class="flex center center-items">
+            <div class="level">{{vm.player.level}}</div>
+        </div>
+        <button ng-click="vm.levelUp()">+</button>
+    </div>
 
-<div ng-click="setGender('male')">Male</div>
-<div ng-click="setGender('female')">Female</div>
+    <div class="gender-selection flex">
+        <div ng-click="setGender('male')">
+            <img src="images/munchkinMale.png">
+        </div>
+        <div ng-click="setGender('female')">
+            <img src="images/munchkinFemale.png">
+        </div>
+    </div>
+</div>
