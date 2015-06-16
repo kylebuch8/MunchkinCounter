@@ -59,7 +59,24 @@
     .gender-selection {
         img {
             height: 200px;
+            opacity: 0.3;
+            .transition(ease-in-out opacity 0.1s);
+
+            &.active {
+                opacity: 1;
+            }
         }
+    }
+
+    .btn-level {
+        background: none;
+        border: 0;
+        color: white;
+        font-size: 100px;
+        text-align: center;
+        margin: 0 16px;
+        font-family: 'IM Fell English', serif;
+        outline: none;
     }
 }
 

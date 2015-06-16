@@ -102,6 +102,23 @@ body {
 }
 .player .gender-selection img {
   height: 200px;
+  opacity: 0.3;
+  -webkit-transition: ease-in-out opacity 0.1s;
+  -o-transition: ease-in-out opacity 0.1s;
+  transition: ease-in-out opacity 0.1s;
+}
+.player .gender-selection img.active {
+  opacity: 1;
+}
+.player .btn-level {
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 100px;
+  text-align: center;
+  margin: 0 16px;
+  font-family: 'IM Fell English', serif;
+  outline: none;
 }
 .gender {
   background-size: contain;
