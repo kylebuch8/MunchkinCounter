@@ -1,0 +1,24 @@
+<div class="player flex column center center-items" ng-style="{ 'background-color': vm.player.color }">
+    <md-button class="btn-back md-icon-button" aria-label="Back" ng-click="vm.goBack()">
+        <md-icon md-svg-icon="../images/icons/ic_arrow_back.svg"></md-icon>
+    </md-button>
+
+    <div class="player-name flex center center-items">{{vm.player.name}}</div>
+
+    <div class="player-level flex">
+        <button class="btn-level btn-level-down" ng-click="vm.levelDown()">-</button>
+        <div class="flex center center-items">
+            <div class="level">{{vm.player.level}}</div>
+        </div>
+        <button class="btn-level btn-level-up" ng-click="vm.levelUp()">+</button>
+    </div>
+
+    <div class="gender-selection flex">
+        <div ng-click="vm.setGender('male')">
+            <img src="images/munchkinMale.png" ng-class="vm.player.gender === 'male' ? 'active' : ''">
+        </div>
+        <div ng-click="vm.setGender('female')">
+            <img src="images/munchkinFemale.png" ng-class="vm.player.gender === 'female' ? 'active' : ''">
+        </div>
+    </div>
+</div>

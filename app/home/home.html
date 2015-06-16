@@ -1,0 +1,11 @@
+<div class="home flex column center center-items" style="height: 100%;">
+    <h1>Munchkin Counter</h1>
+    <form name="gameForm" novalidate ng-submit="gameForm.$valid && vm.goToGame()">
+        <input type="text" ng-model="vm.game.id" placeholder="Game ID" required>
+        <button>Go</button>
+    </form>
+
+    <div>
+        <button ng-click="vm.startNewGame()">Start New Game</button>
+    </div>
+</div>

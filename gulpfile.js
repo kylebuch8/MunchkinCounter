@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    less = require('gulp-less');
 
 gulp.task('server', function () {
     browserSync({
@@ -9,7 +10,14 @@ gulp.task('server', function () {
         ghostMode: false
     });
 
-    gulp.watch('**/*.html').on('change', browserSync.reload);
+    gulp.watch('app/less/**/*.less', ['less']);
+    gulp.watch(['**/*.html', 'app/**/*.js', 'app/styles/**/*.css']).on('change', browserSync.reload);
+});
+
+gulp.task('less', function () {
+    return gulp.src('./app/less/app.less')
+        .pipe(less())
+        .pipe(gulp.dest('./app/styles'));
 });
 
 gulp.task('copy', function () {

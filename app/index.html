@@ -6,34 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
         <title>Munchkin Counter</title>
-        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-        <script src="bower_components/firebase/firebase.js"></script>
 
-        <link href='https://fonts.googleapis.com/css?family=Lusitana|IM+Fell+English' rel='stylesheet' type='text/css'>
-
-        <link rel="import" href="routes.html">
-        <link rel="import" href="mc-app/mc-app.html">
-
-        <style>
-
-            html,
-            body,
-            mc-app {
-                height: 100%;
-            }
-
-            body {
-                font-family: 'IM Fell English', serif;
-                margin: 0;
-            }
-
-            * {
-                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lusitana|IM+Fell+English">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" type="text/css" href="styles/app.css">
     </head>
-    <body unresolved>
-        <mc-app></mc-app>
+    <body ng-app="munchkincounter">
+
+        <ng-view></ng-view>
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/angularfire/dist/angularfire.js"></script>
+        <script src="app.js"></script>
+        <script src="home/home.js"></script>
+        <script src="game/game.js"></script>
+        <script src="setup/setup.js"></script>
+        <script src="player/player.js"></script>
     </body>
 </html>
