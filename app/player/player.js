@@ -4,6 +4,7 @@
     /*global angular, Firebase*/
     angular.module('mc-player', [
         'ngRoute',
+        'ngMaterial',
         'firebase'
     ])
 
@@ -47,6 +48,10 @@
         vm.setGender = function (gender) {
             vm.player.gender = gender;
             vm.player.$save();
+        };
+
+        vm.goBack = function () {
+            window.history.back();
         };
     }
 }());

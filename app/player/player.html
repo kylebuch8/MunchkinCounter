@@ -1,4 +1,8 @@
 <div class="player flex column center center-items" ng-style="{ 'background-color': vm.player.color }">
+    <md-button class="btn-back md-icon-button" aria-label="Back" ng-click="vm.goBack()">
+        <md-icon md-svg-icon="../images/icons/ic_arrow_back.svg"></md-icon>
+    </md-button>
+
     <div class="player-name flex center center-items">{{vm.player.name}}</div>
 
     <div class="player-level flex">

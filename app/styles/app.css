@@ -120,6 +120,14 @@ body {
   font-family: 'IM Fell English', serif;
   outline: none;
 }
+.player .btn-back {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+.player .btn-back md-icon {
+  fill: white;
+}
 .gender {
   background-size: contain;
   background-position: center;
