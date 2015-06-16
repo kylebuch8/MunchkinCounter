@@ -116,3 +116,30 @@
     font-family: 'Lusitana', serif;
     font-size: 90px;
 }
+
+@media(min-width: 768px) {
+    .game {
+        .flex-direction(row);
+        .flex-wrap(wrap);
+
+        .player:nth-last-child(3):first-child,
+        .player:nth-last-child(3):first-child ~ .player {
+            width: calc(100% / 3);
+            height: 100%;
+        }
+
+        .player:nth-last-child(4):first-child,
+        .player:nth-last-child(4):first-child ~ .player {
+            width: 50%;
+            height: 50%;
+        }
+
+        .player:nth-last-child(5):first-child,
+        .player:nth-last-child(5):first-child ~ .player,
+        .player:nth-last-child(6):first-child,
+        .player:nth-last-child(6):first-child ~ .player {
+            width: calc(100% / 3);
+            height: 50%;
+        }
+    }
+}

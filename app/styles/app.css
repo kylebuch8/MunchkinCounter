@@ -161,3 +161,32 @@ body {
   font-family: 'Lusitana', serif;
   font-size: 90px;
 }
+@media (min-width: 768px) {
+  .game {
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .game .player:nth-last-child(3):first-child,
+  .game .player:nth-last-child(3):first-child ~ .player {
+    width: calc(33.33333333%);
+    height: 100%;
+  }
+  .game .player:nth-last-child(4):first-child,
+  .game .player:nth-last-child(4):first-child ~ .player {
+    width: 50%;
+    height: 50%;
+  }
+  .game .player:nth-last-child(5):first-child,
+  .game .player:nth-last-child(5):first-child ~ .player,
+  .game .player:nth-last-child(6):first-child,
+  .game .player:nth-last-child(6):first-child ~ .player {
+    width: calc(33.33333333%);
+    height: 50%;
+  }
+}
