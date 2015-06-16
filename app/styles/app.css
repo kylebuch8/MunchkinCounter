@@ -54,6 +54,15 @@ body {
   -ms-align-items: center;
   align-items: center;
 }
+.home {
+  background-color: #F3C393;
+}
+.home h1 {
+  margin-top: 0;
+}
+.home form {
+  margin-bottom: 30px;
+}
 .game {
   height: 100%;
   color: white;
