@@ -5,11 +5,11 @@
         ng-repeat="player in vm.players"
         ng-style="{ 'background-color': player.color }"
         ng-click="vm.goToPlayer($index)">
-        <div class="flex center-items">
-            <div class="name">{{player.name}}</div>
+        <div class="name-container flex center-items">
+            <h1 class="name">{{player.name}}</h1>
         </div>
         <div class="gender flex center center-items" ng-class="(player.gender === 'male') ? 'male' : 'female'"></div>
-        <div class="flex center center-items">
+        <div class="level-container flex center center-items">
             <div class="level">{{player.level}}</div>
         </div>
     </div>
