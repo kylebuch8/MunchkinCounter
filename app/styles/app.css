@@ -156,7 +156,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 160px;
   height: 160px;
-  border: 5px solid white;
+  border: 3px solid white;
   border-radius: 50%;
   font-family: 'Lusitana', serif;
   font-size: 90px;
@@ -210,6 +210,12 @@ body {
     -moz-flex-grow: 1;
     -ms-flex-grow: 1;
     flex-grow: 1;
+  }
+  .game .player .level-container .level {
+    width: 160px;
+    height: 160px;
+    font-size: 90px;
+    border-width: 5px;
   }
   .game .player .gender {
     position: absolute;
