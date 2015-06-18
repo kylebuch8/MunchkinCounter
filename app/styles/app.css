@@ -224,7 +224,7 @@ body {
     top: -50px;
   }
   .game .player .gender.male {
-    left: calc(50% - 150px);
+    left: calc(50% - 155px);
   }
   .game .player .gender.female {
     right: calc(50% - 170px);
