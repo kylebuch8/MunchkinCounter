@@ -7,5 +7,7 @@
         'mc-game',
         'mc-setup',
         'mc-player'
-    ]);
+    ])
+
+        .constant('firebaseLocation', 'https://munchkincounter.firebaseio.com/');
 }());

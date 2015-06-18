@@ -12,7 +12,7 @@
         .controller('PlayerController', PlayerController);
 
     config.$inject = ['$routeProvider'];
-    PlayerController.$inject = ['$routeParams', '$firebaseObject'];
+    PlayerController.$inject = ['$routeParams', '$firebaseObject', 'firebaseLocation'];
 
     function config($routeProvider) {
         $routeProvider
@@ -23,14 +23,14 @@
             });
     }
 
-    function PlayerController($routeParams, $firebaseObject) {
+    function PlayerController($routeParams, $firebaseObject, firebaseLocation) {
         var vm = this,
             playerRef;
 
         vm.gameId = $routeParams.gameId;
         vm.playerId = $routeParams.playerId;
 
-        playerRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + vm.gameId + '/players/' + vm.playerId);
+        playerRef = new Firebase(firebaseLocation + '/games/' + vm.gameId + '/players/' + vm.playerId);
         vm.player = $firebaseObject(playerRef);
 
         vm.levelDown = function () {

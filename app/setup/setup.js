@@ -11,7 +11,7 @@
         .controller('SetupController', SetupController);
 
     config.$inject = ['$routeProvider'];
-    SetupController.$inject = ['$routeParams', '$location', '$firebaseObject', '$firebaseArray'];
+    SetupController.$inject = ['$routeParams', '$location', '$firebaseObject', '$firebaseArray', 'firebaseLocation'];
 
     function config($routeProvider) {
         $routeProvider
@@ -22,10 +22,10 @@
             });
     }
 
-    function SetupController($routeParams, $location, $firebaseObject, $firebaseArray) {
+    function SetupController($routeParams, $location, $firebaseObject, $firebaseArray, firebaseLocation) {
         var vm = this,
-            gameRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + $routeParams.gameId),
-            playersRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + $routeParams.gameId + '/players');
+            gameRef = new Firebase(firebaseLocation + '/games/' + $routeParams.gameId),
+            playersRef = new Firebase(firebaseLocation + '/games/' + $routeParams.gameId + '/players');
 
         vm.game = $firebaseObject(gameRef);
         vm.players = $firebaseArray(playersRef);
