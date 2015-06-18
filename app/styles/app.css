@@ -103,6 +103,8 @@ body {
 .player .gender-selection img {
   height: 200px;
   opacity: 0.3;
+  border: none;
+  outline: none;
   -webkit-transition: ease-in-out opacity 0.1s;
   -o-transition: ease-in-out opacity 0.1s;
   transition: ease-in-out opacity 0.1s;

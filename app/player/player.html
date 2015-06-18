@@ -14,11 +14,7 @@
     </div>
 
     <div class="gender-selection flex">
-        <div ng-click="vm.setGender('male')">
-            <img src="images/munchkinMale.png" ng-class="vm.player.gender === 'male' ? 'active' : ''">
-        </div>
-        <div ng-click="vm.setGender('female')">
-            <img src="images/munchkinFemale.png" ng-class="vm.player.gender === 'female' ? 'active' : ''">
-        </div>
+        <img src="images/munchkinMale.png" ng-class="vm.player.gender === 'male' ? 'active' : ''" ng-click="vm.setGender('male')">
+        <img src="images/munchkinFemale.png" ng-class="vm.player.gender === 'female' ? 'active' : ''"  ng-click="vm.setGender('female')">
     </div>
 </div>
