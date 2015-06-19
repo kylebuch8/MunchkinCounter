@@ -14,9 +14,6 @@
     GameController.$inject = [
         '$routeParams',
         '$location',
-        '$firebaseArray',
-        '$firebaseObject',
-        'firebaseLocation',
         'game'
     ];
 
@@ -32,37 +29,30 @@
             });
     }
 
-    gamePrep.$inject = ['$route', '$firebaseObject', 'firebaseLocation'];
+    gamePrep.$inject = ['$route', '$firebaseObject', '$q', 'firebaseLocation'];
 
-    function gamePrep($route, $firebaseObject, firebaseLocation) {
-        var gameRef = new Firebase(firebaseLocation + '/games/' + $route.current.params.gameId);
-        return $firebaseObject(gameRef);
-        // gameRef.on('value', function (snapshot) {
-        //     if (snapshot.exists()) {
-        //         return $firebaseObject(gameRef);
-        //     }
-        // });
-    }
+    function gamePrep($route, $firebaseObject, $q, firebaseLocation) {
+        var gameRef = new Firebase(firebaseLocation + '/games/' + $route.current.params.gameId),
+            deferred = $q.defer();
 
-    function GameController($routeParams, $location, $firebaseArray, $firebaseObject, firebaseLocation, game) {
-        var vm = this,
-            gameRef = new Firebase(firebaseLocation + '/games/' + $routeParams.gameId),
-            playersRef = new Firebase(firebaseLocation + '/games/' + $routeParams.gameId + '/players');
-
-        vm.gameId = $routeParams.gameId;
-        vm.game = $firebaseObject(gameRef);
-        vm.players = $firebaseArray(playersRef);
-
-        vm.game.$loaded(function (game) {
-            if (!game.$id) {
-                console.log('there was an error');
+        gameRef.on('value', function (snapshot) {
+            if (snapshot.exists()) {
+                deferred.resolve($firebaseObject(gameRef));
+            } else {
+                deferred.reject();
             }
-        }, function (error) {
-            console.log(error);
         });
 
-        vm.goToPlayer = function (index) {
-            var key = vm.players.$keyAt(index);
+        return deferred.promise;
+    }
+
+    function GameController($routeParams, $location, game) {
+        var vm = this;
+
+        vm.gameId = $routeParams.gameId;
+        vm.game = game;
+
+        vm.goToPlayer = function (key) {
             $location.path('/game/' + vm.gameId + '/player/' + key);
         };
     }

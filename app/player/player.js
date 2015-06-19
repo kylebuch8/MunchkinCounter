@@ -12,26 +12,41 @@
         .controller('PlayerController', PlayerController);
 
     config.$inject = ['$routeProvider'];
-    PlayerController.$inject = ['$routeParams', '$firebaseObject', 'firebaseLocation'];
+    PlayerController.$inject = ['player'];
 
     function config($routeProvider) {
         $routeProvider
             .when('/game/:gameId/player/:playerId', {
                 templateUrl: '/player/player.html',
                 controller: 'PlayerController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    player: playerPrep
+                }
             });
     }
 
-    function PlayerController($routeParams, $firebaseObject, firebaseLocation) {
-        var vm = this,
-            playerRef;
+    playerPrep.$inject = ['$route', '$q', '$firebaseObject', 'firebaseLocation'];
 
-        vm.gameId = $routeParams.gameId;
-        vm.playerId = $routeParams.playerId;
+    function playerPrep($route, $q, $firebaseObject, firebaseLocation) {
+        var deferred = $q.defer(),
+            playerRef = new Firebase(firebaseLocation + '/games/' + $route.current.params.gameId + '/players/' + $route.current.params.playerId);
 
-        playerRef = new Firebase(firebaseLocation + '/games/' + vm.gameId + '/players/' + vm.playerId);
-        vm.player = $firebaseObject(playerRef);
+        playerRef.on('value', function (snapshot) {
+            if (snapshot.exists()) {
+                deferred.resolve($firebaseObject(playerRef));
+            } else {
+                deferred.reject();
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function PlayerController(player) {
+        var vm = this;
+
+        vm.player = player;
 
         vm.levelDown = function () {
             if (vm.player.level > 1) {
