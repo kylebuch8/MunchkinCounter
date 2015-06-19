@@ -39,9 +39,7 @@
                 gameDeferred.reject();
             }
         });
-
-
-
+        
         return $q.all([gameDeferred.promise, $firebaseArray(playersRef)]);
     }
 
