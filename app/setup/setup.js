@@ -11,24 +11,45 @@
         .controller('SetupController', SetupController);
 
     config.$inject = ['$routeProvider'];
-    SetupController.$inject = ['$routeParams', '$location', '$firebaseObject', '$firebaseArray', 'firebaseLocation'];
+    SetupController.$inject = ['$location', 'game'];
 
     function config($routeProvider) {
         $routeProvider
             .when('/game/:gameId/setup', {
                 templateUrl: 'setup/setup.html',
                 controller: 'SetupController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    game: gamePrep
+                }
             });
     }
 
-    function SetupController($routeParams, $location, $firebaseObject, $firebaseArray, firebaseLocation) {
-        var vm = this,
-            gameRef = new Firebase(firebaseLocation + '/games/' + $routeParams.gameId),
-            playersRef = new Firebase(firebaseLocation + '/games/' + $routeParams.gameId + '/players');
+    gamePrep.$inject = ['$route', '$firebaseObject', '$firebaseArray', '$q', 'firebaseLocation'];
 
-        vm.game = $firebaseObject(gameRef);
-        vm.players = $firebaseArray(playersRef);
+    function gamePrep($route, $firebaseObject, $firebaseArray, $q, firebaseLocation) {
+        var gameRef = new Firebase(firebaseLocation + '/games/' + $route.current.params.gameId),
+            playersRef = new Firebase(firebaseLocation + '/games/' + $route.current.params.gameId + '/players'),
+            gameDeferred = $q.defer();
+
+        gameRef.on('value', function (snapshot) {
+            if (snapshot.exists()) {
+                gameDeferred.resolve($firebaseObject(gameRef));
+            } else {
+                gameDeferred.reject();
+            }
+        });
+
+
+
+        return $q.all([gameDeferred.promise, $firebaseArray(playersRef)]);
+    }
+
+    function SetupController($location, game) {
+        var vm = this;
+
+        vm.game = game[0];
+        vm.players = game[1];
 
         vm.addPlayer = function () {
             var newPlayer = {
@@ -49,7 +70,7 @@
         };
 
         vm.playGame = function () {
-            $location.path('/game/' + $routeParams.gameId);
+            $location.path('/game/' + vm.game.$id);
         };
     }
 }());
