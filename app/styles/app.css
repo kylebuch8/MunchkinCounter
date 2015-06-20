@@ -102,6 +102,10 @@ body {
   -ms-flex-grow: 1;
   flex-grow: 1;
 }
+.player .level {
+  width: 150px;
+  height: 150px;
+}
 .player .gender-selection img {
   height: 200px;
   opacity: 0.3;
@@ -119,10 +123,9 @@ body {
   border: 0;
   color: white;
   font-size: 100px;
-  text-align: center;
   margin: 0 16px;
+  padding: 0;
   font-family: 'IM Fell English', serif;
-  outline: none;
 }
 .player .btn-back {
   position: absolute;
