@@ -1,3 +1,7 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
 *,
 :after,
 :before {
@@ -9,9 +13,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-}
-html {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
   font-family: 'IM Fell English', serif;
