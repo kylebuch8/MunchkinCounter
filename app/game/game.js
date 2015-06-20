@@ -55,5 +55,13 @@
         vm.goToPlayer = function (key) {
             $location.path('/game/' + vm.gameId + '/player/' + key);
         };
+
+        vm.goToSettings = function () {
+            $location.path('/game/' + vm.gameId + '/setup');
+        };
+
+        vm.goToHome = function () {
+            $location.path('/');
+        };
     }
 }());
