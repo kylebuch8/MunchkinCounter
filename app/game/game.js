@@ -4,7 +4,8 @@
     /*global angular, Firebase*/
     angular.module('mc-game', [
         'ngRoute',
-        'firebase'
+        'firebase',
+        'ngMaterial'
     ])
 
         .config(config)
@@ -14,6 +15,7 @@
     GameController.$inject = [
         '$routeParams',
         '$location',
+        '$mdSidenav',
         'game'
     ];
 
@@ -46,11 +48,15 @@
         return deferred.promise;
     }
 
-    function GameController($routeParams, $location, game) {
+    function GameController($routeParams, $location, $mdSidenav, game) {
         var vm = this;
 
         vm.gameId = $routeParams.gameId;
         vm.game = game;
+
+        vm.openLeftMenu = function () {
+            $mdSidenav('left').toggle();
+        };
 
         vm.goToPlayer = function (key) {
             $location.path('/game/' + vm.gameId + '/player/' + key);

@@ -1,11 +1,15 @@
-<div style="position: absolute; top: 6px; left: 0; z-index: 1">
+<md-button class="md-icon-button" aria-label="Menu" ng-click="vm.openLeftMenu()" style="position: absolute; top: 6px; left: 0; z-index: 1;">
+    <md-icon md-svg-icon="../images/icons/ic_menu_white_48px.svg"></md-icon>
+</md-button>
+
+<md-sidenav md-component-id="left" class="md-sidenav-left" style="background-color: black;">
     <md-button class="md-icon-button" aria-label="Home" ng-click="vm.goToHome()">
         <md-icon md-svg-icon="../images/icons/ic_home_white_48px.svg"></md-icon>
     </md-button>
     <md-button class="md-icon-button" aria-label="Settings" ng-click="vm.goToSettings()">
         <md-icon md-svg-icon="../images/icons/ic_settings_white_48px.svg"></md-icon>
     </md-button>
-</div>
+</md-sidenav>
 
 <div class="game flex column">
     <div class="player flex"
