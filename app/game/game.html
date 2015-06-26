@@ -1,19 +1,22 @@
-<md-button class="md-icon-button" aria-label="Menu" ng-click="vm.openLeftMenu()" style="position: fixed; top: 6px; left: 0; z-index: 1;">
-    <md-icon md-svg-icon="../images/icons/ic_menu_white_48px.svg"></md-icon>
-</md-button>
-
-<md-sidenav md-component-id="left" class="md-sidenav-left">
-    <md-list>
-        <md-list-item ng-click="vm.goToHome()">
-            Home
-            <md-icon md-svg-icon="../images/icons/ic_home_white_48px.svg"></md-icon>
-        </md-list-item>
-        <md-list-item ng-click="vm.goToSettings()">
-            Setup
-            <md-icon md-svg-icon="../images/icons/ic_settings_white_48px.svg"></md-icon>
-        </md-list-item>
-    </md-list>
-</md-sidenav>
+<md-menu style="position: fixed; z-index: 1; color: #333 !important;">
+    <md-button class="md-icon-button" aria-label="Menu" ng-click="$mdOpenMenu()">
+        <md-icon md-svg-icon="../images/icons/ic_menu_white_48px.svg"></md-icon>
+    </md-button>
+    <md-menu-content width="4">
+        <md-menu-item ng-click="vm.goToHome()">
+            <md-button>
+                <md-icon md-svg-icon="../images/icons/ic_home_white_48px.svg"></md-icon>
+                Home
+            </md-button>
+        </md-menu-item>
+        <md-menu-item ng-click="vm.goToSettings()">
+            <md-button>
+                <md-icon md-svg-icon="../images/icons/ic_settings_white_48px.svg"></md-icon>
+                Setup
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>
 
 <div class="game flex column">
     <div class="player flex"

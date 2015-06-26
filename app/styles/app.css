@@ -168,6 +168,9 @@ body {
   font-family: 'Lusitana', serif;
   font-size: 90px;
 }
+md-sidenav md-icon svg {
+  fill: #333;
+}
 @media (min-width: 768px) {
   .game {
     -webkit-flex-direction: row;
