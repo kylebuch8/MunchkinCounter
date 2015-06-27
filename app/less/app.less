@@ -32,10 +32,18 @@
             font-size: 25px;
         }
 
-        .level {
+        .battle-level {
             width: 60px;
             height: 60px;
             font-size: 40px;
+        }
+
+        .level {
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            bottom: -15px;
+            right: -5px;
         }
     }
 }
@@ -53,7 +61,7 @@
         .flex-grow(1);
     }
 
-    .level {
+    .battle-level {
         width: 150px;
         height: 150px;
     }
@@ -107,7 +115,7 @@
     }
 }
 
-.level {
+.battle-level {
     .flex-display(flex);
     .justify-content(center);
     .align-items(center);
@@ -118,6 +126,22 @@
     border-radius: 50%;
     font-family: 'Lusitana', serif;
     font-size: 90px;
+}
+
+.level {
+    position: absolute;
+    .flex-display(flex);
+    .justify-content(center);
+    .align-items(center);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-family: 'Lusitana', serif;
+    font-size: 30px;
+    font-weight: bold;
+    right: 0;
+    bottom: 0;
+    background-color: white;
 }
 
 md-sidenav {
@@ -157,11 +181,24 @@ md-sidenav {
                 .flex-order(-1);
                 .flex-grow(1);
 
-                .level {
+                .battle-level {
                     width: 160px;
                     height: 160px;
                     font-size: 90px;
                     border-width: 5px;
+                }
+
+                .level {
+                    width: 50px;
+                    height: 50px;
+                    font-size: 30px;
+                    right: 0;
+                    bottom: 0;
+
+                    &.female {
+                        right: auto;
+                        left: 0;
+                    }
                 }
             }
 
@@ -170,6 +207,7 @@ md-sidenav {
                 width: 130px;
                 height: 100%;
                 top: -50px;
+                z-index: 1;
 
                 &.male {
                     left: ~"calc(50% - 155px)";

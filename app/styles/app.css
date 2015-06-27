@@ -83,10 +83,17 @@ body {
 .game .player .name {
   font-size: 25px;
 }
-.game .player .level {
+.game .player .battle-level {
   width: 60px;
   height: 60px;
   font-size: 40px;
+}
+.game .player .level {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  bottom: -15px;
+  right: -5px;
 }
 .player {
   height: 100%;
@@ -102,7 +109,7 @@ body {
   -ms-flex-grow: 1;
   flex-grow: 1;
 }
-.player .level {
+.player .battle-level {
   width: 150px;
   height: 150px;
 }
@@ -146,7 +153,7 @@ body {
 .gender.female {
   background-image: url('../images/munchkinFemale.png');
 }
-.level {
+.battle-level {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
@@ -167,6 +174,31 @@ body {
   border-radius: 50%;
   font-family: 'Lusitana', serif;
   font-size: 90px;
+}
+.level {
+  position: absolute;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-family: 'Lusitana', serif;
+  font-size: 30px;
+  font-weight: bold;
+  right: 0;
+  bottom: 0;
+  background-color: white;
 }
 md-sidenav md-icon svg {
   fill: #333;
@@ -221,17 +253,29 @@ md-sidenav md-icon svg {
     -ms-flex-grow: 1;
     flex-grow: 1;
   }
-  .game .player .level-container .level {
+  .game .player .level-container .battle-level {
     width: 160px;
     height: 160px;
     font-size: 90px;
     border-width: 5px;
+  }
+  .game .player .level-container .level {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    right: 0;
+    bottom: 0;
+  }
+  .game .player .level-container .level.female {
+    right: auto;
+    left: 0;
   }
   .game .player .gender {
     position: absolute;
     width: 130px;
     height: 100%;
     top: -50px;
+    z-index: 1;
   }
   .game .player .gender.male {
     left: calc(50% - 155px);

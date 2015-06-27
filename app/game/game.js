@@ -54,6 +54,15 @@
         vm.gameId = $routeParams.gameId;
         vm.game = game;
 
+        vm.bgColors = {
+            '#cc0000': '#660000',
+            'green': '#004000',
+            'purple': '#400040',
+            'orange': '#7F5200',
+            '#0854C7': '#042A63',
+            '#ffcc00': '#7E6400'
+        };
+
         vm.openLeftMenu = function () {
             $mdSidenav('left').toggle();
         };
