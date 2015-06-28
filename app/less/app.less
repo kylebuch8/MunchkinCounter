@@ -55,20 +55,36 @@
 
     .player-name {
         font-size: 50px;
+        margin-bottom: 25px;
+    }
+
+    .player-level {
+        margin: 25px 0;
     }
 
     & > div {
         .flex-grow(1);
+        // margin: 25px;
     }
 
     .battle-level {
-        width: 150px;
-        height: 150px;
+        // width: 150px;
+        // height: 150px;
+        width: 100px;
+        height: 100px;
+        font-size: 60px;
     }
 
     .gender-selection {
+        width: 100%;
+        margin-top: 25px;
+
+        > div {
+            width: 100%;
+        }
+
         img {
-            height: 200px;
+            height: 125px;
             opacity: 0.3;
             border: none;
             outline: none;
@@ -84,8 +100,8 @@
         background: none;
         border: 0;
         color: white;
-        font-size: 100px;
-        margin: 0 16px;
+        font-size: 40px;
+        margin: 0 10px;
         padding: 0;
         font-family: 'IM Fell English', serif;
     }
@@ -97,6 +113,16 @@
 
         md-icon {
             fill: white;
+        }
+    }
+
+    .level-control-container {
+        h1 {
+            font-family: 'Lusitana', serif;
+        }
+
+        h2 {
+            margin-bottom: 0;
         }
     }
 }
@@ -237,6 +263,18 @@ md-sidenav {
         .player:nth-last-child(6):first-child ~ .player {
             width: calc(100% / 3);
             height: 50%;
+        }
+    }
+
+    .player {
+        .gender-selection {
+            img {
+                height: 200px;
+            }
+        }
+
+        .battle-level {
+            margin-top: 55px;
         }
     }
 }

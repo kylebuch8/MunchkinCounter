@@ -39,7 +39,7 @@
                 gameDeferred.reject();
             }
         });
-        
+
         return $q.all([gameDeferred.promise, $firebaseArray(playersRef)]);
     }
 
@@ -52,7 +52,8 @@
         vm.addPlayer = function () {
             var newPlayer = {
                 name: vm.newPlayerName,
-                level: 1
+                level: 1,
+                bonuses: 0
             };
 
             vm.players.$add(newPlayer);

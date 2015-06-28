@@ -5,16 +5,30 @@
 
     <div class="player-name flex center center-items">{{vm.player.name}}</div>
 
-    <div class="player-level flex">
-        <button class="btn-level btn-level-down" ng-click="vm.levelDown()">-</button>
-        <div class="flex center center-items">
-            <div class="battle-level">{{vm.player.level}}</div>
+    <div class="player-level flex center center-items">
+        <div class="flex column center center-items level-control-container">
+            <h2>Level</h2>
+            <md-button class="btn-level" ng-click="vm.levelUp()">+</md-button>
+            <h1>{{vm.player.level}}</h1>
+            <md-button class="btn-level" ng-click="vm.levelDown()">-</md-button>
         </div>
-        <button class="btn-level btn-level-up" ng-click="vm.levelUp()">+</button>
+        <div class="flex center center-items">
+            <div class="battle-level">{{vm.player.level + vm.player.bonuses}}</div>
+        </div>
+        <div class="flex column center center-items level-control-container">
+            <h2>Bonuses</h2>
+            <md-button class="btn-level" ng-click="vm.bonusesUp()">+</md-button>
+            <h1>{{vm.player.bonuses}}</h1>
+            <md-button class="btn-level" ng-click="vm.bonusesDown()">-</md-button>
+        </div>
     </div>
 
     <div class="gender-selection flex">
-        <img src="images/munchkinMale.png" ng-class="vm.player.gender === 'male' ? 'active' : ''" ng-click="vm.setGender('male')">
-        <img src="images/munchkinFemale.png" ng-class="vm.player.gender === 'female' ? 'active' : ''"  ng-click="vm.setGender('female')">
+        <div class="flex center center-items">
+            <img src="images/munchkinMale.png" ng-class="vm.player.gender === 'male' ? 'active' : ''" ng-click="vm.setGender('male')">
+        </div>
+        <div class="flex center center-items">
+            <img src="images/munchkinFemale.png" ng-class="vm.player.gender === 'female' ? 'active' : ''"  ng-click="vm.setGender('female')">
+        </div>
     </div>
 </div>

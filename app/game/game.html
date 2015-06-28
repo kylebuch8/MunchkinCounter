@@ -29,8 +29,7 @@
         <div class="gender flex center center-items" ng-class="player.gender"></div>
         <div class="level-container flex center center-items">
             <div style="position: relative;">
-                <div class="battle-level">{{player.level}}</div>
-                <!--<div style="width: 50px; height: 50px; border-radius: 50%; border: 5px solid white; display: flex; align-items: center; justify-content: center; position: absolute; bottom: 0; font-family: 'Lusitana', serif; font-size: 20px;" ng-style="{ 'background-color': vm.bgColors[player.color] }">{{player.level}}</div>-->
+                <div class="battle-level">{{player.level + player.bonuses}}</div>
                 <div class="level" ng-class="player.gender" ng-style="{ 'color': player.color }">{{player.level}}</div>
             </div>
         </div>

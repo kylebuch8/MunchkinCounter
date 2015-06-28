@@ -60,6 +60,18 @@
             vm.player.$save();
         };
 
+        vm.bonusesDown = function () {
+            if (vm.player.bonuses > 0) {
+                vm.player.bonuses -= 1;
+                vm.player.$save();
+            }
+        };
+
+        vm.bonusesUp = function () {
+            vm.player.bonuses += 1;
+            vm.player.$save();
+        };
+
         vm.setGender = function (gender) {
             vm.player.gender = gender;
             vm.player.$save();

@@ -102,6 +102,10 @@ body {
 }
 .player .player-name {
   font-size: 50px;
+  margin-bottom: 25px;
+}
+.player .player-level {
+  margin: 25px 0;
 }
 .player > div {
   -webkit-flex-grow: 1;
@@ -110,11 +114,19 @@ body {
   flex-grow: 1;
 }
 .player .battle-level {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+  font-size: 60px;
+}
+.player .gender-selection {
+  width: 100%;
+  margin-top: 25px;
+}
+.player .gender-selection > div {
+  width: 100%;
 }
 .player .gender-selection img {
-  height: 200px;
+  height: 125px;
   opacity: 0.3;
   border: none;
   outline: none;
@@ -129,8 +141,8 @@ body {
   background: none;
   border: 0;
   color: white;
-  font-size: 100px;
-  margin: 0 16px;
+  font-size: 40px;
+  margin: 0 10px;
   padding: 0;
   font-family: 'IM Fell English', serif;
 }
@@ -141,6 +153,12 @@ body {
 }
 .player .btn-back md-icon {
   fill: white;
+}
+.player .level-control-container h1 {
+  font-family: 'Lusitana', serif;
+}
+.player .level-control-container h2 {
+  margin-bottom: 0;
 }
 .gender {
   background-size: contain;
@@ -299,5 +317,11 @@ md-sidenav md-icon svg {
   .game .player:nth-last-child(6):first-child ~ .player {
     width: calc(33.33333333%);
     height: 50%;
+  }
+  .player .gender-selection img {
+    height: 200px;
+  }
+  .player .battle-level {
+    margin-top: 55px;
   }
 }
