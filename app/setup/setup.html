@@ -1,45 +1,49 @@
-<form name="playerForm" novalidate ng-submit="playerForm.$valid && vm.addPlayer()">
-    <input type="text" ng-model="vm.newPlayerName" placeholder="Player Name">
-    <button>Add Player</button>
-</form>
+<div class="flex column" style="height: 100%">
+    <md-content md-scroll-y>
+        <form name="playerForm" novalidate ng-submit="playerForm.$valid && vm.addPlayer()">
+            <input type="text" ng-model="vm.newPlayerName" placeholder="Player Name">
+            <button>Add Player</button>
+        </form>
 
-<div ng-repeat="player in vm.players">
-    {{player.name}} - <button ng-click="vm.removePlayer($index)">Remove Player</button>
-    <div>
-        <h3>Color</h3>
-        <label>
-            <input type="radio" ng-model="player.color" value="#cc0000" ng-change="vm.updatePlayer($index)"> Red
-        </label>
-        <label>
-            <input type="radio" ng-model="player.color" value="green" ng-change="vm.updatePlayer($index)"> Green
-        </label>
-        <label>
-            <input type="radio" ng-model="player.color" value="purple" ng-change="vm.updatePlayer($index)"> Purple
-        </label>
-        <label>
-            <input type="radio" ng-model="player.color" value="orange" ng-change="vm.updatePlayer($index)"> Orange
-        </label>
-        <label>
-            <input type="radio" ng-model="player.color" value="#0854C7" ng-change="vm.updatePlayer($index)"> Blue
-        </label>
-        <label>
-            <input type="radio" ng-model="player.color" value="#ffcc00" ng-change="vm.updatePlayer($index)"> Yellow
-        </label>
-    </div>
-    <div>
-        <h3>Gender</h3>
-        <label>
-            <input type="radio" ng-model="player.gender" value="male" ng-change="vm.updatePlayer($index)"> Male
-        </label>
-        <label>
-            <input type="radio" ng-model="player.gender" value="female" ng-change="vm.updatePlayer($index)"> Female
-        </label>
-    </div>
-    <hr>
+        <div ng-repeat="player in vm.players">
+            {{player.name}} - <button ng-click="vm.removePlayer($index)">Remove Player</button>
+            <div>
+                <h3>Color</h3>
+                <label>
+                    <input type="radio" ng-model="player.color" value="#cc0000" ng-change="vm.updatePlayer($index)"> Red
+                </label>
+                <label>
+                    <input type="radio" ng-model="player.color" value="green" ng-change="vm.updatePlayer($index)"> Green
+                </label>
+                <label>
+                    <input type="radio" ng-model="player.color" value="purple" ng-change="vm.updatePlayer($index)"> Purple
+                </label>
+                <label>
+                    <input type="radio" ng-model="player.color" value="orange" ng-change="vm.updatePlayer($index)"> Orange
+                </label>
+                <label>
+                    <input type="radio" ng-model="player.color" value="#0854C7" ng-change="vm.updatePlayer($index)"> Blue
+                </label>
+                <label>
+                    <input type="radio" ng-model="player.color" value="#ffcc00" ng-change="vm.updatePlayer($index)"> Yellow
+                </label>
+            </div>
+            <div>
+                <h3>Gender</h3>
+                <label>
+                    <input type="radio" ng-model="player.gender" value="male" ng-change="vm.updatePlayer($index)"> Male
+                </label>
+                <label>
+                    <input type="radio" ng-model="player.gender" value="female" ng-change="vm.updatePlayer($index)"> Female
+                </label>
+            </div>
+            <hr>
+        </div>
+
+        <div>
+            Winning Level: <input type="number" ng-model="vm.game.winningLevel" ng-change="vm.game.$save()">
+        </div>
+
+        <button ng-click="vm.playGame()">Play</button>
+    </md-content>
 </div>
-
-<div>
-    Winning Level: <input type="number" ng-model="vm.game.winningLevel" ng-change="vm.game.$save()">
-</div>
-
-<button ng-click="vm.playGame()">Play</button>
