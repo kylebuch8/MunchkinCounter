@@ -1,9 +1,32 @@
 <div class="flex column" style="height: 100%">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Setup</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="Menu" ng-click="vm.showForm()">
+                <md-icon md-svg-icon="../images/icons/ic_add_white_48px.svg"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
     <md-content md-scroll-y>
-        <form name="playerForm" novalidate ng-submit="playerForm.$valid && vm.addPlayer()">
+        <div layout-margin layout-padding>
+            <form name="playerForm" novalidate>
+                <md-input-container>
+                    <label>Name</label>
+                    <input ng-model="vm.newPlayerName">
+                </md-input-container>
+                <div>
+                    <h3>Color:</h3>
+                    <label>
+                        <input type="radio"> Red
+                    </label>
+                </div>
+            </form>
+        </div>
+        <!-- <form name="playerForm" novalidate ng-submit="playerForm.$valid && vm.addPlayer()">
             <input type="text" ng-model="vm.newPlayerName" placeholder="Player Name">
             <button>Add Player</button>
-        </form>
+        </form> -->
 
         <div ng-repeat="player in vm.players">
             {{player.name}} - <button ng-click="vm.removePlayer($index)">Remove Player</button>

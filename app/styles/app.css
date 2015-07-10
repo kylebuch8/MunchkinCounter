@@ -71,6 +71,12 @@ ng-view {
   width: 100%;
   height: 100%;
 }
+label {
+  display: inline-block;
+  min-height: 20px;
+  cursor: pointer;
+  max-width: 100%;
+}
 .home {
   background-color: #F3C393;
 }
