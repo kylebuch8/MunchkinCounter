@@ -61,6 +61,7 @@
 
             vm.players.$add(newPlayer);
             vm.newPlayerName = '';
+            vm.showForm = false;
         };
 
         vm.removePlayer = function (index) {
