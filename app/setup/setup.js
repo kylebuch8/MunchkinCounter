@@ -48,12 +48,15 @@
 
         vm.game = game[0];
         vm.players = game[1];
+        vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
+        vm.newPlayerColor = null;
 
         vm.addPlayer = function () {
             var newPlayer = {
                 name: vm.newPlayerName,
                 level: 1,
-                bonuses: 0
+                bonuses: 0,
+                color: vm.newPlayerColor
             };
 
             vm.players.$add(newPlayer);

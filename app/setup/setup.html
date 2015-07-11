@@ -17,10 +17,10 @@
                 </md-input-container>
                 <div>
                     <h3>Color:</h3>
-                    <label>
-                        <input type="radio"> Red
-                    </label>
+                    <div style="margin: 8px; width: 50px; height: 50px; display: inline-block;" ng-repeat="color in vm.colors" ng-style="{ 'background-color': color }" ng-click="vm.newPlayerColor = color"></div>
                 </div>
+
+                <button ng-click="vm.addPlayer()">Add Player</button>
             </form>
         </div>
         <!-- <form name="playerForm" novalidate ng-submit="playerForm.$valid && vm.addPlayer()">
