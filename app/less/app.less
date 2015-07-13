@@ -37,11 +37,28 @@ md-toolbar {
     background-color: #222;
 }
 
+md-backdrop.md-opaque {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
 label {
     display: inline-block;
     min-height: 20px;
     cursor: pointer;
     max-width: 100%;
+}
+
+.color-selector {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    cursor: pointer;
+    border: 5px solid rgba(0, 0, 0, 0);
+    .transition(border-color 0.1s ease-in-out);
+
+    &.active {
+        border-color: rgba(0, 0, 0, 0.7);
+    }
 }
 
 .home {
@@ -53,6 +70,23 @@ label {
 
     form {
         margin-bottom: 30px;
+    }
+}
+
+.setup {
+    .gender-selection {
+        img {
+            height: 125px;
+            opacity: 0.3;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            .transition(ease-in-out opacity 0.1s);
+
+            &.active {
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -137,6 +171,7 @@ label {
             opacity: 0.3;
             border: none;
             outline: none;
+            cursor: pointer;
             .transition(ease-in-out opacity 0.1s);
 
             &.active {

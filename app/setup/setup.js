@@ -8,10 +8,11 @@
     ])
 
         .config(config)
-        .controller('SetupController', SetupController);
+        .controller('SetupController', SetupController)
+        .controller('PlayerFormController', PlayerFormController);
 
     config.$inject = ['$routeProvider'];
-    SetupController.$inject = ['$location', 'game'];
+    SetupController.$inject = ['$location', '$mdDialog', 'game'];
 
     function config($routeProvider) {
         $routeProvider
@@ -43,13 +44,34 @@
         return $q.all([gameDeferred.promise, $firebaseArray(playersRef)]);
     }
 
-    function SetupController($location, game) {
+    function SetupController($location, $mdDialog, game) {
         var vm = this;
 
         vm.game = game[0];
         vm.players = game[1];
         vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
         vm.newPlayerColor = null;
+
+        vm.showPlayerForm = function (event, player) {
+            $mdDialog
+                .show({
+                    templateUrl: 'setup/player-dialog.html',
+                    controller: PlayerFormController,
+                    controllerAs: 'vm',
+                    targetEvent: event,
+                    resolve: {
+                        player: function () {
+                            return player;
+                        }
+                    }
+                })
+                .then(function (player) {
+                    player.level = 1;
+                    player.bonuses = 0;
+
+                    vm.players.$add(player);
+                });
+        };
 
         vm.addPlayer = function () {
             var newPlayer = {
@@ -74,6 +96,27 @@
 
         vm.playGame = function () {
             $location.path('/game/' + vm.game.$id);
+        };
+    }
+
+    PlayerFormController.$inject = ['$mdDialog', 'player'];
+
+    function PlayerFormController($mdDialog, player) {
+        var vm = this;
+
+        if (player) {
+            vm.edit = true;
+        }
+
+        vm.player = player;
+        vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
+
+        vm.submit = function () {
+            $mdDialog.hide(vm.player);
+        };
+
+        vm.close = function () {
+            $mdDialog.cancel();
         };
     }
 }());

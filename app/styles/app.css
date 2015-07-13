@@ -97,11 +97,27 @@ ng-view.ng-leave.ng-leave-active {
 md-toolbar {
   background-color: #222;
 }
+md-backdrop.md-opaque {
+  background-color: rgba(0, 0, 0, 0.75);
+}
 label {
   display: inline-block;
   min-height: 20px;
   cursor: pointer;
   max-width: 100%;
+}
+.color-selector {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  cursor: pointer;
+  border: 5px solid rgba(0, 0, 0, 0);
+  -webkit-transition: border-color 0.1s ease-in-out;
+  -o-transition: border-color 0.1s ease-in-out;
+  transition: border-color 0.1s ease-in-out;
+}
+.color-selector.active {
+  border-color: rgba(0, 0, 0, 0.7);
 }
 .home {
   background-color: #F3C393;
@@ -111,6 +127,19 @@ label {
 }
 .home form {
   margin-bottom: 30px;
+}
+.setup .gender-selection img {
+  height: 125px;
+  opacity: 0.3;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: ease-in-out opacity 0.1s;
+  -o-transition: ease-in-out opacity 0.1s;
+  transition: ease-in-out opacity 0.1s;
+}
+.setup .gender-selection img.active {
+  opacity: 1;
 }
 .game {
   height: 100%;
@@ -184,6 +213,7 @@ label {
   opacity: 0.3;
   border: none;
   outline: none;
+  cursor: pointer;
   -webkit-transition: ease-in-out opacity 0.1s;
   -o-transition: ease-in-out opacity 0.1s;
   transition: ease-in-out opacity 0.1s;
