@@ -87,12 +87,7 @@
                 <md-divider></md-divider>
             </div>
 
-            <div layout-margin layout-padding>
-                <h2>Winning Level</h2>
-                <input type="number" ng-model="vm.game.winningLevel" ng-change="vm.game.$save()">
-            </div>
-
-            <button ng-click="vm.playGame()">Play</button>
+            <md-button class="md-raised md-primary" ng-click="vm.playGame()">Play</md-button>
         </div>
     </md-content>
 </div>
