@@ -25,7 +25,7 @@
     <md-button class="menu-lg-screen md-icon-button" aria-label="Menu" ng-click="vm.openLeftMenu()">
         <md-icon md-svg-icon="../images/icons/ic_menu_white_48px.svg"></md-icon>
     </md-button>
-    <md-content md-scroll-y class="game flex column" style="flex: 1;">
+    <md-content md-scroll-y class="game flex column" flex="1">
         <div class="player flex"
             ng-repeat="(key, player) in vm.game.players"
             ng-style="{ 'background-color': player.color }"
