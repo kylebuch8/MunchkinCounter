@@ -12,7 +12,7 @@
         .controller('PlayerFormController', PlayerFormController);
 
     config.$inject = ['$routeProvider'];
-    SetupController.$inject = ['$location', '$mdDialog', 'game'];
+    SetupController.$inject = ['$scope', '$location', '$mdDialog', 'game'];
 
     function config($routeProvider) {
         $routeProvider
@@ -44,15 +44,29 @@
         return $q.all([gameDeferred.promise, $firebaseArray(playersRef)]);
     }
 
-    function SetupController($location, $mdDialog, game) {
-        var vm = this;
+    function SetupController($scope, $location, $mdDialog, game) {
+        var vm = this,
+            dialogOpen = false;
 
         vm.game = game[0];
         vm.players = game[1];
         vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
         vm.newPlayerColor = null;
 
+        document.addEventListener('backbutton', backbuttonHandler, false);
+
+        function backbuttonHandler() {
+            if (dialogOpen) {
+                $mdDialog.cancel();
+                return;
+            }
+
+            navigator.app.backHistory();
+        }
+
         vm.showPlayerForm = function (event, player) {
+            dialogOpen = true;
+
             $mdDialog
                 .show({
                     templateUrl: 'setup/player-dialog.html',
@@ -70,6 +84,9 @@
                     player.bonuses = 0;
 
                     vm.players.$add(player);
+                })
+                .finally(function () {
+                    dialogOpen = false;
                 });
         };
 
@@ -97,6 +114,12 @@
         vm.playGame = function () {
             $location.path('/game/' + vm.game.$id);
         };
+
+        $scope.$on('$destroy', destroyHandler);
+
+        function destroyHandler() {
+            document.removeEventListener('backbutton', backbuttonHandler);
+        }
     }
 
     PlayerFormController.$inject = ['$mdDialog', 'player'];
