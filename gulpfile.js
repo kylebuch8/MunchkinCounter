@@ -31,13 +31,17 @@ gulp.task('copy', ['clean'], function () {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build-cordova', ['build'], function () {
+gulp.task('build-cordova', ['build', 'clean-cordova'], function () {
     return gulp.src('./dist/**/*')
         .pipe(gulp.dest('./cordova/www'));
 });
 
 gulp.task('clean', function (cb) {
     del(['./dist/**/*'], cb);
+});
+
+gulp.task('clean-cordova', function (cb) {
+    del(['./cordova/www/**/*'], cb);
 });
 
 gulp.task('replace', ['clean', 'copy'], function () {
