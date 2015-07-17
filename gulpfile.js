@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
-    htmlreplace = require('gulp-html-replace');
+    htmlreplace = require('gulp-html-replace'),
+    gulpFilter = require('gulp-filter');
 
 gulp.task('server', function () {
     browserSync({
@@ -31,8 +32,15 @@ gulp.task('copy', ['clean'], function () {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build-cordova', ['build', 'clean-cordova'], function () {
+gulp.task('build-cordova', ['build:cordova', 'clean-cordova'], function () {
+    var indexFilter = gulpFilter('index.html');
+
     return gulp.src('./dist/**/*')
+        .pipe(indexFilter)
+        .pipe(htmlreplace({
+            'cordova': 'cordova.js'
+        }))
+        .pipe(indexFilter.restore())
         .pipe(gulp.dest('./cordova/www'));
 });
 
@@ -53,6 +61,26 @@ gulp.task('replace', ['clean', 'copy'], function () {
 });
 
 gulp.task('build', ['clean', 'copy', 'replace'], function () {
+    return gulp.src(['./app/**/*.js', '!./app/bower_components/**/*'])
+        .pipe(gulp.dest('./dist'))
+        .pipe(sourcemaps.init())
+        .pipe(concat('app.concat.js'))
+        .pipe(uglify())
+        .pipe(rename('app.min.js'))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('replace:cordova', ['clean', 'copy'], function () {
+    return gulp.src('./app/index.html')
+        .pipe(htmlreplace({
+            'js': 'app.min.js',
+            'cordova': 'cordova.js'
+        }))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('build:cordova', ['clean', 'copy', 'replace:cordova'], function () {
     return gulp.src(['./app/**/*.js', '!./app/bower_components/**/*'])
         .pipe(gulp.dest('./dist'))
         .pipe(sourcemaps.init())

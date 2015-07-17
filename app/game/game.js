@@ -13,6 +13,7 @@
 
     config.$inject = ['$routeProvider'];
     GameController.$inject = [
+        '$scope',
         '$routeParams',
         '$location',
         '$mdSidenav',
@@ -48,7 +49,7 @@
         return deferred.promise;
     }
 
-    function GameController($routeParams, $location, $mdSidenav, game) {
+    function GameController($scope, $routeParams, $location, $mdSidenav, game) {
         var vm = this;
 
         vm.gameId = $routeParams.gameId;
@@ -62,6 +63,17 @@
             '#0854C7': '#042A63',
             '#ffcc00': '#7E6400'
         };
+
+        document.addEventListener('backbutton', backbuttonHandler, false);
+
+        function backbuttonHandler() {
+            if ($mdSidenav('left').isOpen()) {
+                $mdSidenav('left').toggle();
+                return;
+            }
+
+            navigator.app.backHistory();
+        }
 
         vm.openLeftMenu = function () {
             $mdSidenav('left').toggle();
@@ -78,5 +90,11 @@
         vm.goToHome = function () {
             $location.path('/');
         };
+
+        $scope.$on('$destroy', destroyHandler);
+
+        function destroyHandler() {
+            document.removeEventListener('backbutton', backbuttonHandler);
+        }
     }
 }());

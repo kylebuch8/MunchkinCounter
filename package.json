@@ -13,6 +13,7 @@
     "del": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.6.0",
+    "gulp-filter": "^2.0.2",
     "gulp-html-replace": "^1.5.1",
     "gulp-less": "^3.0.3",
     "gulp-rename": "^1.2.2",
