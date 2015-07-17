@@ -31,8 +31,9 @@ gulp.task('copy', ['clean'], function () {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build-cordova', function () {
-
+gulp.task('build-cordova', ['build'], function () {
+    return gulp.src('./dist/**/*')
+        .pipe(gulp.dest('./cordova/www'));
 });
 
 gulp.task('clean', function (cb) {

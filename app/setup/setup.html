@@ -4,7 +4,7 @@
             <h2>Setup</h2>
             <span flex></span>
             <md-button class="md-icon-button" aria-label="Menu" ng-click="vm.showPlayerForm($event)">
-                <md-icon md-svg-icon="../images/icons/ic_add_white_48px.svg"></md-icon>
+                <md-icon md-svg-icon="images/icons/ic_add_white_48px.svg"></md-icon>
             </md-button>
         </div>
     </md-toolbar>
@@ -58,24 +58,24 @@
                             <div style="width: 32px; height: 32px;" ng-style="{ 'background-color': player.color }"></div>
                         </div>
                         <div class="flex center center-items" flex="1">
-                            <img src="../images/munchkinMale.png" height="75" ng-if="player.gender === 'male'">
-                            <img src="../images/munchkinFemale.png" height="75" ng-if="player.gender === 'female'">
+                            <img src="images/munchkinMale.png" height="75" ng-if="player.gender === 'male'">
+                            <img src="images/munchkinFemale.png" height="75" ng-if="player.gender === 'female'">
                         </div>
                         <div class="flex end" flex="1">
                             <md-menu>
                                 <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="$mdOpenMenu()">
-                                    <md-icon md-svg-icon="../images/icons/ic_more_vert_black_48px.svg"></md-icon>
+                                    <md-icon md-svg-icon="images/icons/ic_more_vert_black_48px.svg"></md-icon>
                                 </md-button>
                                 <md-menu-content width="4">
                                     <md-menu-item>
                                         <md-button ng-click="vm.showPlayerForm($event, player)">
-                                            <md-icon md-svg-icon="../images/icons/ic_mode_edit_black_48px.svg" md-menu-align-target></md-icon>
+                                            <md-icon md-svg-icon="images/icons/ic_mode_edit_black_48px.svg" md-menu-align-target></md-icon>
                                             Edit Player
                                         </md-button>
                                     </md-menu-item>
                                     <md-menu-item>
                                         <md-button ng-click="vm.removePlayer($index)">
-                                            <md-icon md-svg-icon="../images/icons/ic_delete_black_48px.svg" md-menu-align-target></md-icon>
+                                            <md-icon md-svg-icon="images/icons/ic_delete_black_48px.svg" md-menu-align-target></md-icon>
                                             Remove Player
                                         </md-button>
                                     </md-menu-item>

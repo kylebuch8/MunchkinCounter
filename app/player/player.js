@@ -17,7 +17,7 @@
     function config($routeProvider) {
         $routeProvider
             .when('/game/:gameId/player/:playerId', {
-                templateUrl: '/player/player.html',
+                templateUrl: 'player/player.html',
                 controller: 'PlayerController',
                 controllerAs: 'vm',
                 resolve: {
