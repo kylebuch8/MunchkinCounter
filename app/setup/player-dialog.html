@@ -30,7 +30,7 @@
             </div>
 
             <md-button class="md-raised" ng-click="vm.submit()" ng-if="!vm.edit">Add Player</md-button>
-            <md-button class="md-raised" ng-click="vm.close()" ng-if="vm.edit">Edit Player</md-button>
+            <md-button class="md-raised" ng-click="vm.submit(true)" ng-if="vm.edit">Edit Player</md-button>
         </form>
     </md-dialog-content>
 </md-dialog>

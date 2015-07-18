@@ -80,10 +80,16 @@
                     }
                 })
                 .then(function (player) {
-                    player.level = 1;
-                    player.bonuses = 0;
+                    if (!player.update) {
+                        player.level = 1;
+                        player.bonuses = 0;
 
-                    vm.players.$add(player);
+                        vm.players.$add(player);
+                        return;
+                    }
+
+                    delete player.update;
+                    vm.players.$save(player);
                 })
                 .finally(function () {
                     dialogOpen = false;
@@ -134,7 +140,11 @@
         vm.player = player;
         vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
 
-        vm.submit = function () {
+        vm.submit = function (update) {
+            if (update) {
+                vm.player.update = true;
+            }
+
             $mdDialog.hide(vm.player);
         };
 
