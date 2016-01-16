@@ -50,7 +50,7 @@
 
         vm.game = game[0];
         vm.players = game[1];
-        vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
+        vm.colors = ['#c00', 'green', 'purple', '#FF7600', '#0854C7', '#ffcc00'];
         vm.newPlayerColor = null;
 
         document.addEventListener('backbutton', backbuttonHandler, false);
@@ -138,7 +138,7 @@
         }
 
         vm.player = player;
-        vm.colors = ['#c00', 'green', 'purple', 'orange', '#0854C7', '#ffcc00'];
+        vm.colors = ['#c00', 'green', 'purple', '#FF7600', '#0854C7', '#ffcc00'];
 
         vm.submit = function (update) {
             if (update) {
