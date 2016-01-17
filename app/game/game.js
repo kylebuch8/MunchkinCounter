@@ -91,6 +91,10 @@
             $location.path('/');
         };
 
+        vm.shareGame = function () {
+            window.plugins.socialsharing.share('Join me on in a game of Munchkin!', 'Munchkin!!!', null, 'https://munchkincounter.firebaseapp.com/#/game/' + vm.gameId);
+        };
+
         $scope.$on('$destroy', destroyHandler);
 
         function destroyHandler() {
