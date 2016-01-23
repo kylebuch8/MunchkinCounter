@@ -2,6 +2,21 @@
 @import "mixins/vendor-prefixes.less";
 @import "scaffolding.less";
 
+.home {
+    input,
+    button {
+         -webkit-appearance: none;
+         border-radius: 0;
+         background-color: white;
+         margin: 0;
+         border: none;
+    }
+
+    input::-webkit-input-placeholder {
+        color: #666;
+    }
+}
+
 ng-view {
     width: 100%;
     height: 100%;

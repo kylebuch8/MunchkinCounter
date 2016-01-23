@@ -1,11 +1,16 @@
-<div class="home flex column center center-items" style="height: 100%;">
-    <h1>Munchkin Counter</h1>
-    <form name="gameForm" novalidate ng-submit="gameForm.$valid && vm.goToGame()">
-        <input type="text" ng-model="vm.game.id" placeholder="Game ID" required>
-        <button>Go</button>
-    </form>
-
-    <div>
-        <button ng-click="vm.startNewGame()">Start New Game</button>
+<div class="home flex column center center-items" style="height: 100%; background-color: rgba(0, 0, 0, 0.7); background-size: cover; background-image: url(images/wood-bg3.jpg); box-shadow: inset 0px 0px 100px 50px rgba(0,0,0,0.75);">
+    <div class="flex center center-items" flex="50">
+        <h1 style="text-shadow: -2px 4px 0px black; text-align: center; color: white; text-transform: uppercase;"><span style="font-size: 60px; position: relative; top: 7px;">M</span>unchkin <span style="font-size: 60px; position: relative; top: 7px;">C</span>ounter</h1>
+    </div>
+    <div class="flex column center-items" flex="50" style="width: 100%; padding: 16px;">
+        <form style="max-width: 500px; width: 100%;" name="gameForm" novalidate ng-submit="gameForm.$valid && vm.goToGame()">
+            <div class="flex">
+                <input style="flex: 1; background: rgba(255, 255, 255, 0.7); color: black; padding: 16px; border: none;" type="text" ng-model="vm.game.id" placeholder="Game ID" required>
+                <button style="padding: 16px;">JOIN</button>
+            </div>
+        </form>
+        <div style="width: 100%; max-width: 500px;">
+            <button style="text-transform: uppercase; width: 100%; background: white; border: none; padding: 16px;" ng-click="vm.startNewGame()">Start a New Game</button>
+        </div>
     </div>
 </div>
