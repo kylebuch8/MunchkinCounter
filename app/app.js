@@ -9,7 +9,7 @@
         'mc-player'
     ])
 
-        .constant('firebaseLocation', 'https://munchkincounter.firebaseio.com/')
+        .constant('firebaseLocation', 'https://munchkincounter-eaefb.firebaseio.com')
         .run(run);
 
     run.$inject = ['$location'];

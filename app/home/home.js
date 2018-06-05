@@ -10,7 +10,7 @@
         .controller('HomeController', HomeController);
 
     config.$inject = ['$routeProvider'];
-    HomeController.$inject = ['$location'];
+    HomeController.$inject = ['$location', 'firebaseLocation'];
 
     function config($routeProvider) {
         $routeProvider
@@ -25,7 +25,7 @@
         return Math.random().toString(36).substr(2, 7);
     }
 
-    function HomeController($location) {
+    function HomeController($location, firebaseLocation) {
         var vm = this;
 
         vm.goToGame = function () {
@@ -34,7 +34,7 @@
 
         vm.startNewGame = function () {
             var id = generateRandomId(),
-                gameRef = new Firebase('https://munchkincounter.firebaseio.com/games/' + id),
+                gameRef = new Firebase(firebaseLocation + '/games/' + id),
                 game = {
                     players: [],
                     winningLevel: 10,
